@@ -1,0 +1,91 @@
+<?php
+    session_start();
+    include 'dao/UserDAO.php';
+
+    $pro = new UserDAO();
+
+    if(isset($_SESSION['email']) && isset($_SESSION['pass'])){
+        header("Location: index.php");
+    }else{
+        if(isset($_POST['email']) && isset($_POST['pass'])){
+            $email = $_POST['email'];
+            $pass = $_POST['pass'];
+            $verrify = $pro->user_login($email, $pass);
+
+            if($verrify){
+                $_SESSION['email'] = $_POST['email'];
+                $_SESSION['pass'] = $_POST['pass'];
+
+                header("Location: index.php");
+            }else{
+                echo "<script>alert('Error man!');</script>";
+            }
+
+        }
+    }
+?>
+
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/tweety.jpg"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <link href="layout/login_header.php" rel="stylesheet">
+    <link rel="stylesheet"href="css/login.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/modernizr.custom.63321.js"></script>
+    <title>Tweety | Login</title>
+</head>
+<body>
+    <?php include 'layout/login_header.php'; ?>
+
+    <!--<div class="outer" align="center" >
+        <div class="body" >
+            <div class="error_login">
+                <span><?php /*if (isset($errMsg)) echo $errMsg; */?></span>
+            </div>
+            <div class="inner_body" align="left" >
+
+                <!--Logging in-->
+                <!--<form class="form-horizontal" action="login.php" method="post">
+                    Email Address: <input type="text" class="input-large" id="email" name="email"/><br />
+                    Password:      <input type="password" id="password" name="pass"/><br/>
+                    <button type="submit" >Submit</button> &nbsp; <button type="reset">Clear</button>
+                </form>
+
+                <!--Sign-up-->
+
+           <!-- </div>
+        </div>
+    </div>-->
+
+
+    <div class="container">
+        <br><br><br><br><br><br><br><br><br><br>
+        <section class="main">
+            <form class="form-1" action="login.php" method="post">
+                <p class="field">
+                    <input type="text" name="email" placeholder="Username or email">
+                    <i class="icon-user icon-large"></i>
+                </p>
+                <p class="field">
+                    <input type="password" name="pass" placeholder="Password">
+                    <i class="icon-lock icon-large"></i>
+                </p>
+                <p class="submit">
+                    <button type="submit" name="submit"><i class="icon-arrow-right icon-large"></i></button>
+                </p>
+            </form>
+        </section>
+    </div>
+
+
+    <!--<form class="form-horizontal" action="login.php" method="post">
+            Email Address: <input type="text" class="input-large" id="email" name="email"/><br />
+            Password: <input type="password" id="password" name="pass"/><br/>
+            <button type="submit" >Submit</button> &nbsp; <button type="reset">Clear</button>
+        </form>-->
+</body>
+</html>
