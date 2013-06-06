@@ -8,7 +8,7 @@
         $email = $_SESSION['email'];
     }
 ?>
-<!-- Ako si Mark Ben -->
+
 <html>
 <head>
     <link href="css/login_bootstrap.css" rel="stylesheet">
