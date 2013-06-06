@@ -5,7 +5,7 @@
 
     $action = new UserDAO();
 
-    $email = $_SESSION['emailadd'];
+    $email = $_SESSION['email'];
 
     $action->user_logout($email);
 ?>

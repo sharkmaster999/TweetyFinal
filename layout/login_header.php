@@ -11,7 +11,7 @@
                     </div>
 
                     <div class="div_sign">
-                        <span class="s_hide"><span style="color: white; font-size: 12px; font-weight:;">New to Tweety? &nbsp;<a href="sign-up.php" ><i class="icon-signin icon-white"></i> Sign Up</a></span>
+                        <span class="s_hide"><span style="color: white; font-size: 12px; font-weight:;">New to Tweety? &nbsp;<a href="sign-up.php" class="sign_upLink" ><i class="icon-signin icon-white"></i>&nbsp;<span id="sign_upLink">Sign Up</span></a></span>
                     </div>
 
                 </div>

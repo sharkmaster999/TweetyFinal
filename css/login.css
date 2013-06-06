@@ -85,15 +85,38 @@ body{
 }
 
 .error_login{
-    background-color: rgb(200,20,20);
+    border: solid 1px;
+    padding: 10px;
+    width: 100px;
+    margin: 0 auto;
 }
 
 .error_login span{
-    color: white;
+    color: red;
     font-size: 12px;
     text-decoration: none;
     font-weight: bold;
-    font-family: Nimbus Sans L, helvetica, segoe, serif;
+    font-family: Nimbus Sans L, helvetica, segoe;
+}
+
+.sign_upLink{
+    text-decoration: none;
+    font-family: Nimbus Sans;
+    font-size: 13px;
+    color: black;
+}
+
+#sign_upLink{
+    font-family: Nimbus Sans;
+    font-size: 13px;
+    color: black;
+}
+
+#sign_upLink:hover{
+    font-family: Nimbus Sans;
+    font-size: 13px;
+    color: black;
+    text-decoration: underline;
 }
 
 .div_sign{
@@ -140,45 +163,14 @@ body{
     font-weight: normal;
     font-family: Nimbus Sans L, helvetica, segoe, serif;
 }
-
-.div_login{
-    float: left;
-    height: 200px;
+.div_wrapper_login{
     padding: 3px;
-    border: solid 1px gray;
+    margin-bottom: 2px;
 }
 
-.span_lab{
-    padding: 3px;
-    color: white;
-    border: solid 1px gray;
-}
-
-.div_sign_up{
-    background: none;
-    height: auto;
-    width: auto;
-}
-
-#tbl_sign_up tr td{
-    padding: 4px;
-}
-
-#tbl_sign_up tffot tr td{
-    padding: 0px;
-}
-
-#tbl_sign_up tfoot tr td{
-}
-
-.div_sign_up_lab{
-    width: 300px;
-    color: #ffffff;
-    border-bottom: solid 1px gray;
-}
-
-.label_span_sign{
-    color: white;
-    font-size: 19px;
+.lab_login{
+    color: black;
+    font-family: Nimbus Sans;
+    font-size: 15px;
     font-weight: bold;
 }

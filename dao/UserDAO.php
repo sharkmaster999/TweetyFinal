@@ -43,15 +43,14 @@
 
             if(isset($_SESSION['email']) && isset($_SESSION['pass'])){
 
-                $stmt = $this->dbcon->prepare("UPDATE accounts SET status=1 WHERE emailaddress=?;");
+                $stmt = $this->dbcon->prepare("UPDATE accounts SET status=0 WHERE emailaddress=?;");
                 $stmt->bindParam(1,$email);
                 $stmt->execute();
+                $this->close();
 
                 session_unset();
                 session_destroy();
                 header("Location: login.php");
-
-                $this->close();
             }
 
         }

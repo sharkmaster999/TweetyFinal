@@ -18,7 +18,7 @@
 
                 header("Location: index.php");
             }else{
-                echo "<script>alert('Error man!');</script>";
+                echo "<script>alert('Unknown user!');</script>";
             }
 
         }
@@ -35,47 +35,30 @@
     <link href="layout/login_header.php" rel="stylesheet">
     <link rel="stylesheet"href="css/login.css" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/user.js"></script>
     <script src="js/modernizr.custom.63321.js"></script>
     <title>Tweety | Login</title>
 </head>
 <body>
     <?php include 'layout/login_header.php'; ?>
 
-    <!--<div class="outer" align="center" >
-        <div class="body" >
-            <div class="error_login">
-                <span><?php /*if (isset($errMsg)) echo $errMsg; */?></span>
-            </div>
-            <div class="inner_body" align="left" >
-
-                <!--Logging in-->
-                <!--<form class="form-horizontal" action="login.php" method="post">
-                    Email Address: <input type="text" class="input-large" id="email" name="email"/><br />
-                    Password:      <input type="password" id="password" name="pass"/><br/>
-                    <button type="submit" >Submit</button> &nbsp; <button type="reset">Clear</button>
-                </form>
-
-                <!--Sign-up-->
-
-           <!-- </div>
-        </div>
-    </div>-->
-
-
     <div class="container">
         <br><br><br><br><br><br><br><br><br><br>
         <section class="main">
-            <form class="form-1" action="login.php" method="post">
+            <form class="form-1" action="login.php" method="post" onsubmit="return checkEmail();">
+                <div class="div_wrapper_login">
+                    <span class="lab_login">Login</span>
+                </div>
                 <p class="field">
-                    <input type="text" name="email" placeholder="Username or email">
+                    <input type="text" name="email" id="email" placeholder="Email address">
                     <i class="icon-user icon-large"></i>
                 </p>
                 <p class="field">
-                    <input type="password" name="pass" placeholder="Password">
+                    <input type="password" name="pass" id="pass" placeholder="Password">
                     <i class="icon-lock icon-large"></i>
                 </p>
                 <p class="submit">
-                    <button type="submit" name="submit"><i class="icon-arrow-right icon-large"></i></button>
+                    <button type="submit" name="submit" id="loginBtn"><i class="icon-arrow-right icon-large"></i></button>
                 </p>
             </form>
         </section>
