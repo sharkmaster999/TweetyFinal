@@ -6,6 +6,18 @@
         header("Location: login.php");
     }else{
         $email = $_SESSION['email'];
+        $pass = $_SESSION['pass'];
+
+        $info = new UserDAO();
+        $user = $info->viewUserInfo($email);
+        $lname = $user->getLastName();
+        $fname = $user->getFirstName();
+        /*$address = $user->getAddress();
+        $contact = $user->getContactNum();
+        $gender = $user->getGender();
+        $age = $user->getAge();
+        $username = $user->getUsername();*/
+
     }
 ?>
 <!-- This is tweety home -->
@@ -16,7 +28,7 @@
     <title>Tweety | Home</title>
 </head>
 <body>
-    Hello <?php echo $email; ?> <br/>
+    Hello <h5><?php echo $fname . " " . $lname ; ?></h5>
     <a href="logout.php">Log out</a>
 </body>
 </html>
