@@ -4,6 +4,7 @@ $(document).ready(function(){
        var email = $('#email').val();
        var pass = $('#pass').val();
 
+       //some changes here :)
        if(email == "" || email == null){
            alert("All fields are required!");
            return false;
