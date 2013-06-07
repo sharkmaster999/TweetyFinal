@@ -1,17 +1,11 @@
 $(document).ready(function(){
 
    $('#loginBtn').click(function(){
-
-       var inval_email = $('#email').val().match(/\S+@\S+\.\S+/);
        var email = $('#email').val();
        var pass = $('#pass').val();
 
-       if(email == "" || pass == ""){
+       if(email == "" || email == null){
            alert("All fields are required!");
-           return false;
-       }else if(email == "" || email == null || inval_email == false){
-           alert("Invalid Email Address!");
-           $('#email').focus();
            return false;
        }else if(pass == "" || pass == null){
            alert("Password is empty!");
