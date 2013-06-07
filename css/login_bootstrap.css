@@ -1091,7 +1091,7 @@ input[type="tel"],
 input[type="color"],
 .uneditable-input {
   display: inline-block;
-  height: 26px;
+  height: 30px;
   padding: 4px 6px;
   margin-bottom: 10px;
   font-size: 14px;
@@ -1294,11 +1294,11 @@ textarea::-webkit-input-placeholder {
 }
 
 .input-large {
-  width: 210px;
+  width: 250px;
 }
 
 .input-xlarge {
-  width: 270px;
+  width: 470px;
 }
 
 .input-xxlarge {
@@ -1716,7 +1716,7 @@ select:focus:invalid:focus {
   width: auto;
   height: 20px;
   min-width: 16px;
-  padding: 4px 5px;
+  padding: 4px 8px;
   font-size: 14px;
   font-weight: normal;
   line-height: 20px;

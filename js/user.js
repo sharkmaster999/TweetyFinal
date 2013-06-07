@@ -28,3 +28,8 @@ $(document).ready(function(){
             return false;
         }
     }
+
+    function autoLName(){
+        var lname = document.getElementById('srchInput');
+
+    }

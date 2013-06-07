@@ -136,8 +136,57 @@
             $this->closeConn();
         }
 
+        //Search all user
+        function searchUser($lastname){
+
+            $this->openConn();
+
+            $stmt = $this->dbcon->prepare("SELECT a.id, a.firstName, a.lastName, a.address, a.contactNum, a.gender, a.age, a.username, a.emailaddress
+                                           FROM accounts AS a
+                                           WHERE a.lastName LIKE'" . $lastname ."%';");
+            $stmt->execute();
+
+            $searched = false;
+
+            while($row = $stmt->fetch()){
+                $ctr=0;
+                while($ctr<2){
+                    if($row[$ctr] != "" || $row[$ctr] != ""){
+                        $searched = true;
+                    }
+                    $ctr++;
+                }
+
+                if($searched){
+
+                    $info = new User();
+                    $info->setId($row[0]);
+                    $info->setFirstName($row[1]);
+                    $info->setLastName($row[2]);
+                    $info->setAddress($row[3]);
+                    $info->setContactNum($row[4]);
+                    $info->setGender($row[5]);
+                    $info->setAge($row[6]);
+                    $info->setUsername($row[7]);
+                    $info->setEmailaddress($row[8]);
+
+                    $this->close();
+                    return $info;
+                }
+
+            }
+            if(!$searched){
+
+                $err = "Error msg";
+                return $err;
+            }
+
+            $this->closeConn();
+
+        }
+
         /*Saving Edited User Info*/
-        function edit_prof_save($edit_lastName, $edit_firstName, $edit_address, $edit_contact, $email){
+        /*function edit_prof_save($edit_lastName, $edit_firstName, $edit_address, $edit_contact, $email){
 
             $this->openConn();
 
@@ -178,5 +227,5 @@
             $stmt->execute();
 
             $this->closeConn();
-        }
+        }*/
     }

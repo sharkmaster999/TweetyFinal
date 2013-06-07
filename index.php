@@ -29,6 +29,18 @@
 </head>
 <body>
     Hello <h5><?php echo $fname . " " . $lname ; ?></h5>
-    <a href="logout.php">Log out</a>
+    <a href="logout.php">Log out</a> <br/><br/>
+
+    <div>
+        <label class="control-label" for="inputIcon">Search:</label>
+        <div class="controls">
+            <div class="input-prepend">
+                <form class="input-append">
+                    <input data-provide="typeahead" data-source="['Alabama', 'Aklahama']" class="span2 input-large" onkeyup="checkLastname(this)" id="srchInput" name="srchInput" type="text"> //Search input
+                    <span class="add-on"><i class="icon-search"></i></span>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
