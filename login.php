@@ -50,7 +50,7 @@
                     <span class="lab_login">Login</span>
                 </div>
                 <p class="field">
-                    <input type="text" name="email" id="email" placeholder="Email address">
+                    <input type="text" name="email" id="email" placeholder="Email address" onkeyup="checkSpace(this)">
                     <i class="icon-user icon-large"></i>
                 </p>
                 <p class="field">
