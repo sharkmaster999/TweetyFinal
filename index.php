@@ -25,11 +25,12 @@
 <head>
     <link href="css/login_bootstrap.css" rel="stylesheet">
     <script src="js/bootstrap.min.js"></script>
-    <title>Tweety | Home</title>
+    <title>Tweety</title>
 </head>
 <body>
     Hello <h5><?php echo $fname . " " . $lname ; ?></h5>
     <a href="logout.php">Log out</a> <br/><br/>
+    <a href="profile.php">Profile</a> <br/><br/>
 
     <div>
         <label class="control-label" for="inputIcon">Search:</label>
