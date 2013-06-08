@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.9
+-- version 3.4.11.1deb1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 07, 2013 at 10:58 AM
--- Server version: 5.5.8
--- PHP Version: 5.3.5
+-- Generation Time: Jun 08, 2013 at 04:59 PM
+-- Server version: 5.5.29
+-- PHP Version: 5.4.6-1ubuntu1.2
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -47,8 +48,32 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `lastName`, `firstName`, `address`, `contactNum`, `gender`, `age`, `username`, `emailaddress`, `password`, `status`) VALUES
-(35, 'Lopez', 'Mark Anthony', 'Isabel', '09486145546', 'male', 17, 'lopezmark143', 'olympus_guardian13@yahoo.com', 'mark', 0),
+(35, 'Lopez', 'Mark Anthony', 'Isabel', '09486145546', 'male', 17, 'lopezmark143', 'olympus_guardian13@yahoo.com', 'mark', 1),
 (42, '', '', '', '', '', 0, '', 'e@yahoo.com', 'e', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `m_id` int(11) NOT NULL,
+  `post_contents` mediumtext NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `status` int(2) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `email` (`email`),
+  KEY `id` (`m_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`id`, `m_id`, `post_contents`, `email`, `status`) VALUES
+(20, 31, 'ahehehe', 'olympus_guardian13@yahoo.com', 1);
 
 -- --------------------------------------------------------
 
@@ -62,11 +87,6 @@ CREATE TABLE IF NOT EXISTS `following` (
   KEY `from` (`from`),
   KEY `to` (`to`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `following`
---
-
 
 -- --------------------------------------------------------
 
@@ -88,30 +108,6 @@ CREATE TABLE IF NOT EXISTS `microtweets` (
 
 INSERT INTO `microtweets` (`id`, `contents`, `emailadd`) VALUES
 (31, 'huhuh', 'olympus_guardian13@yahoo.com');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `other_posted`
---
-
-CREATE TABLE IF NOT EXISTS `other_posted` (
-  `p_id` int(11) NOT NULL AUTO_INCREMENT,
-  `id` int(11) NOT NULL,
-  `post_contents` mediumtext NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `status` int(2) NOT NULL,
-  PRIMARY KEY (`p_id`),
-  KEY `email` (`email`),
-  KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
-
---
--- Dumping data for table `other_posted`
---
-
-INSERT INTO `other_posted` (`p_id`, `id`, `post_contents`, `email`, `status`) VALUES
-(20, 31, 'ahehehe', 'olympus_guardian13@yahoo.com', 1);
 
 -- --------------------------------------------------------
 
@@ -140,6 +136,13 @@ INSERT INTO `photos` (`id`, `images`, `email`) VALUES
 --
 
 --
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`m_id`) REFERENCES `microtweets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`email`) REFERENCES `accounts` (`emailaddress`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `following`
 --
 ALTER TABLE `following`
@@ -153,14 +156,11 @@ ALTER TABLE `microtweets`
   ADD CONSTRAINT `microtweets_ibfk_1` FOREIGN KEY (`emailadd`) REFERENCES `accounts` (`emailaddress`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `other_posted`
---
-ALTER TABLE `other_posted`
-  ADD CONSTRAINT `other_posted_ibfk_1` FOREIGN KEY (`email`) REFERENCES `accounts` (`emailaddress`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `other_posted_ibfk_2` FOREIGN KEY (`id`) REFERENCES `microtweets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `photos`
 --
 ALTER TABLE `photos`
   ADD CONSTRAINT `photos_ibfk_1` FOREIGN KEY (`email`) REFERENCES `accounts` (`emailaddress`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
